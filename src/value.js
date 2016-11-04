@@ -7,6 +7,7 @@ import vars from './replacers/vars';
 import percent from './replacers/percent';
 import operation from './replacers/operation';
 import scale from './replacers/scale';
+import { Platform } from 'react-native';
 
 export default class Value {
   /**
@@ -178,10 +179,17 @@ export default class Value {
     }
     let scaleFactor = vars.get('$scale', this.varsArr) || 1;
     if (scaleFactor === 1) {
+      if (Platform.OS === 'android' && (typeof this.outValue === 'number')) {
+          this.outValue = Math.round(this.outValue);
+      }
       return;
     }
     if (scale.isScalable(this.outValue, this.prop)) {
-      this.outValue = scale.calc(this.outValue, scaleFactor);
+      let value = scale.calc(this.outValue, scaleFactor);
+      if (Platform.OS === 'android' && (typeof value === 'number')) {
+          value = Math.round(value);
+      }
+      this.outValue = value;
     }
   }
 }
