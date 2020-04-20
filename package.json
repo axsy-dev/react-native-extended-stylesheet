@@ -1,5 +1,5 @@
 {
-  "name": "react-native-extended-stylesheet",
+  "name": "@axsy-dev/react-native-extended-stylesheet",
   "version": "0.3.0",
   "description": "Extended StyleSheets for React Native",
   "author": {
@@ -16,9 +16,13 @@
     "release-patch": "npm run code && npm test && npm version patch && npm publish && git push --follow-tags",
     "release-minor": "npm run code && npm test && npm version minor && npm publish && git push --follow-tags"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/vitalets/react-native-extended-stylesheet.git"
+    "url": "ssh://git@github.com/axsy-dev/react-app.git",
+    "code-url": "ssh://git@github.com/axsy-dev/react-native-extended-stylesheet.git"
   },
   "bugs": {
     "url": "https://github.com/vitalets/react-native-extended-stylesheet/issues"
